@@ -21,6 +21,8 @@ import ListingsDetail from "./components/ListingsDetail";
 import AirbnbFooter from "./components/Footer";
 import Admin from "./components/Admin";
 
+import Bookings from "./components/Bokings"
+
 import {
   AppBar,
   Toolbar,
@@ -115,7 +117,7 @@ function Home() {
   const [addFav] = useMutation(ADD_FAV, {
     onCompleted: () => {
       setToastError(false);
-      setToastMessage("Favorite added successfully");
+      setToastMessage("muvaffaqiyatli qo'shildi");
       setOpenToast(true);
       refetchFavorites();
     },
@@ -129,7 +131,7 @@ function Home() {
   const [removeFav] = useMutation(REMOVE_FAV, {
     onCompleted: () => {
       setToastError(false);
-      setToastMessage("Favorite removed successfully");
+      setToastMessage("muvaffaqiyatli o'chirildi");
       setOpenToast(true);
       refetchFavorites();
     },
@@ -269,6 +271,21 @@ function Home() {
           >
             {user && isLogin ? (
               <>
+                <Button
+                  component={Link}
+                  to="/bokings"
+                  sx={{
+                    color: "#222",
+                    borderRadius: "24px",
+                    textTransform: "none",
+                    fontSize: { xs: 13, sm: 14 },
+                    minWidth: { xs: 75, sm: 90 },
+                    px: { xs: 1, sm: 1.5 },
+                  }}
+                >
+                  Bookings
+                </Button>
+
                 <Avatar
                   sx={{
                     bgcolor: deepPurple[500],
@@ -326,13 +343,24 @@ function Home() {
                     minWidth: { xs: 75, sm: 90 },
                     px: { xs: 1.5, sm: 2 },
                     fontSize: { xs: 13, sm: 14 },
-                    "&:hover": {
-                      backgroundColor: "#e03150",
-                      boxShadow: "none",
-                    },
+                    
                   }}
                 >
                   Sign Up
+                </Button>
+
+                <Button
+                  onClick={() => setOpenLogin(true)}
+                  variant="text"
+                  sx={{
+                    color: "#222",
+                    borderRadius: "24px",
+                    textTransform: "none",
+                    fontSize: { xs: 13, sm: 14 },
+                    minWidth: { xs: 70, sm: 85 },
+                  }}
+                >
+                  Bookings
                 </Button>
               </>
             )}
@@ -779,6 +807,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/sign" element={<Signup />} />
       <Route path="/admin" element={<Admin />} />
+      <Route path="/bokings" element={<Bookings />} />
     </Routes>
   );
 }
