@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import {
     Box,
     Typography,
@@ -62,24 +62,20 @@ export default function Admin() {
         setError('');
         setSuccess('');
 
-        // Maydonlarni tekshirish
         if (!form.title || !form.price || !form.rating || !form.image) {
             setError("Iltimos, barcha maydonlarni to'ldiring");
             return;
         }
 
-        // Rating 1-5 oralig'ida bo'lishi
         if (Number(form.rating) < 1 || Number(form.rating) > 5) {
             setError("Reyting 1 dan 5 gacha bo'lishi kerak");
             return;
         }
 
-        // Eski uylarni olish
         const oldHomes = JSON.parse(
             localStorage.getItem('homes') || '[]'
         );
 
-        // Yangi uy
         const newHome = {
             id: Date.now(),
             title: form.title,
@@ -88,7 +84,6 @@ export default function Admin() {
             image: form.image
         };
 
-        // Yangi uyni saqlash
         const updatedHomes = [...oldHomes, newHome];
 
         localStorage.setItem(
@@ -96,7 +91,6 @@ export default function Admin() {
             JSON.stringify(updatedHomes)
         );
 
-        // Formani tozalash
         setForm({
             title: '',
             price: '',

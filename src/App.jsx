@@ -343,7 +343,7 @@ function Home() {
                     minWidth: { xs: 75, sm: 90 },
                     px: { xs: 1.5, sm: 2 },
                     fontSize: { xs: 13, sm: 14 },
-                    
+
                   }}
                 >
                   Sign Up
@@ -789,7 +789,6 @@ function Home() {
           variant="filled"
           sx={{
             width: "100%",
-            maxWidth: { xs: "calc(100vw - 32px)", sm: "400px" },
           }}
         >
           {toastMessage}
@@ -806,6 +805,7 @@ function App() {
       <Route path="/listing/:id" element={<ListingsDetail />} />
       <Route path="/login" element={<Login />} />
       <Route path="/sign" element={<Signup />} />
+      <Route path="/foter" element={<AirbnbFooter />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="/bokings" element={<Bookings />} />
     </Routes>
